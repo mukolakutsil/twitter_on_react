@@ -3,18 +3,20 @@ import PostListItem from '../post-list-item/post-list-item';
 
 import './post-list.css';
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, deletePost }) => {
 
     const elements = posts.map(item => {
         const { id, ...itemProps } = item;
 
         return (
             <li key={id} className="list-group-item">
-                <PostListItem {...itemProps} />
+                <PostListItem
+                    {...itemProps}
+                    deletePost={() => deletePost(id)} />
             </li>
         )
     });
-    
+
     return (
         <ul className="app-list list-group">
 
